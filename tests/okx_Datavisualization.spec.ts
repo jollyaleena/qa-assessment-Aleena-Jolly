@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { Loginpage } from '../pages/login'
 
-test('test', async ({ page }) => {
+test('Display Orderbook,Chart,Market Depth in OKX all types ', async ({ page }) => {
     test.setTimeout(90000);
     const Login = new Loginpage(page)
     await Login.gotoLoginpage();

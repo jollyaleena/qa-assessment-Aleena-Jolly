@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { Loginpage } from '../pages/login'
 
-test('test', async ({ page }) => {
+test('Limit Edge order placed in OKX Spot', async ({ page }) => {
     test.setTimeout(90000);
     const Login = new Loginpage(page)
     await Login.gotoLoginpage();
