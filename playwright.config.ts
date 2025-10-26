@@ -26,9 +26,9 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     video: 'on',
-    contextOptions:{
-      recordVideo:{dir:'videos/'}
-    },
+    // contextOptions:{
+    //   recordVideo:{dir:'videos/'}
+    // },
     launchOptions: {
       slowMo: 1000
     },
@@ -55,6 +55,27 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+
+    {
+      name: 'Mobile Safari',
+      use: {
+        ...devices['iPhone 11'],
+      },
+
+    },
+    {
+      name: 'Mobile Safari-Pixel 5',
+      use: {
+        ...devices['Pixel 5'],
+      },
+    },
+    {
+      name: 'Mobile Safari - iPad Mini',
+      use: {
+        ...devices['iPad Mini'],
+      },
+    },
+
 
     /* Test against mobile viewports. */
     // {
