@@ -2,7 +2,6 @@ import { test, expect, chromium } from '@playwright/test';
 import { Loginpage } from '../pages/login'
 
 test('Another user account name displaying in Order history account section', async ({ page }) => {
-  test.setTimeout(60000);
   const Login = new Loginpage(page)
   await Login.gotoLoginpage();
   await Login.login('user4@goquant.io', '60Re3G9KvvFl4Ihegxpi');

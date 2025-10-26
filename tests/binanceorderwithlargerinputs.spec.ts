@@ -6,7 +6,6 @@ test.use({
 });
 
 test('Binance order with larger inputs', async ({ page }) => {
-    test.setTimeout(60000);
     const Login = new Loginpage(page)
     await Login.gotoLoginpage();
     await Login.login('user4@goquant.io', '60Re3G9KvvFl4Ihegxpi');

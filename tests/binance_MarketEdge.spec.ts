@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 import { Loginpage } from '../pages/login'
 
 test('Binance USDM Market Edge buy and sell trade ', async ({ page }) => {
-    test.setTimeout(60000);
     const Login = new Loginpage(page)
     await Login.gotoLoginpage();
     await Login.login('user4@goquant.io', '60Re3G9KvvFl4Ihegxpi');
