@@ -1,8 +1,12 @@
- Test Report: GoTrade Platform
- Test Period: October 21-29, 2025
- Tester: Aleena Jolly
- Testing Framework: Playwright with TypeScript
- Browsers Tested: Chromium 141.0, Firefox 144.0, Mobile Emulation(iPad Mini,Pixel 5,iPhone 11
+ Test Report: GoTrade Platform<br>
+ Test Period: October 21-29, 2025<br>
+ Tester: Aleena Jolly<br>
+ Testing Framework: Playwright with TypeScript<br>
+ Browsers Tested: Chromium 141.0, Firefox 144.0, Mobile Emulation(iPad Mini,Pixel 5,iPhone 11)
+ 
+
+
+ 
  
 # Executive Summary
  The GoTrade Platform is an online trading platform that allows users to buy and sell stocks.This report presents the findings from comprehensive automated testing of the GoTrade Platform conducted over one week intensive testing. During this period, I  executed 36 carefully designed test cases including functional validation, user interface testing,negative test scenarios and edge case scenarios. I have identified 6 issues while testing and also 3 negative test scenarios.
@@ -17,4 +21,199 @@ In the testing approach i mainly prioritize the entire trading platform which co
 
 The first phase involves user login and logout functionality which includes user can login to the platform with invalid email and password and after login able to add trading accounts such as Binance USDM,Binance COINM,OKX  and able to see all operations.Also check able to click and select all features in the page and able to navigate to all pages.
 
-The second phase covers trading functionality which include user can possible to place order with the trading accounts created and placed orders should be visible in the order history.Also if there are any open orders found user can able to modify and cancel orders.These operation should be performed without any server issues.
+The second phase covers trading functionality which include user can possible to place order with the trading accounts created and placed orders should be visible in the order history.Also if there are any open orders found user can able to modify and cancel orders.These operation should be performed without any server issues.User can able to view the order book,chart,last trades,order book visualizer according to the trade selected and these values get verifying according to the order placed.Able to select any symbol if user needs to check.User can add accounts and able to modify and delete account details.Covers all trading user flows and check in different browsers.
+
+The final phase covers edge case boundary testing to check whether if trading platform works with extreme inputs and shows any error messages or page gets unresponsive or not.
+
+## Test Case Selection Rationale and In-Depth Analysis
+ I developed 36 distinct test cases organized into four primary categories, each addressing specific aspects of application quality and user experience.
+ 
+### Authentication Test Cases (5 tests): 
+These test cases mainly focused on user can able to login to the platform with valid email and password and after that able to logout from the platform.Also check with by user entering with  invalid email and try to login then shows error message as user was not found in the system and user entering with invalid passoword and try to login shows the passowrd is invalid also user login with both invalid username and password which display error message as the user was not found in the system.
+
+### Trading Functionality Test cases(31 tests):
+These test cases cover the entire trading functionality.User can able to create trading accounts such as Binance USDM,Binance COINM,OKX and able to place order with the selected trade.Able to select any symbol and place orders and placed orders should be displaying in the order history so the user can check whether the order is correct or not and the status of orders should be sometimes Inprogress,completed,rejected.If there are any  open positions user can able to modify order by changing the amount and price and verify whether able to modify and also cancel orders.User can also able to see the orderbook,chart,last trades and market data the values get varying according to the order placemenet.Also include some issues when testing with trading functionality.
+
+### User Interface and Experience Test cases(6 tests):
+These test cases are also included in the trading functionality feature but perform these tests in diffrent browser such as chrome and firefox and also run in Mobile emulators like Pixel 5, iPad Mini, iPhone 13.So checking whether the design is valid and any issues when open in mobile emulators.The UI is not responsive when test in mobile emulators and sometimes the test takes more time to load when run in different browsers.
+
+###  Performance and Scalability Test Cases (1 tests): 
+The test takes more time to load and page is not responsive message displayed when user try to check with the GoMarket page.
+
+## Tools and Techniques Employed
+The testing framework was built around Playwright as the primary automation tool, chosen for its robust cross-browser support, excellent handling of modern web applications, and comprehensive API for both UI and network-level testing. I implemented the Page Object Model design pattern to ensure test maintainability and reusability, creating separate page objects for each major application screen and component.
+
+##  Challenges Encountered and Solutions Implemented
+When number of users interact with the trading platform and try to place order recieves no response from UDP server error which fails the test cases that is the main challenge faced so inorder to resolve this issue a hard reset is possible and try to re-login after that all the trading accounts created is not displayed and able to create another trading accounts which is a huge task.My personal struggle is that i am not familiar with Playwright using Typescript so i started studying basic tutorials from YouTube and try to start automation.
+
+# Detailed Findings
+## Critical Issues
+### CRIT-001: Order accepted message displaying with larger inputs								
+Severity : Critical								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ in iPad Mini
+2. Select an account
+3. Tap on Market Edge 
+4. Add filled inputs with larger data
+5. Tap Buy/Sell<br>
+6. Tap Trade
+
+							
+Actual result :  Order accepted message showing<br>
+Expected result : Order not accepted should display<br>
+Environment details Device : iPad Mini(Mobile emulation)<br>
+To see the output video run test in terminal :<br>
+                       npx playwright test binanceorderwithlargerinputs.spec.ts --project="Mobile Safari - iPad Mini"<br>
+                       npx playwright show-report                
+                     
+								
+### CRIT-002: Different user Account name showing in order history account tab after placed order									
+Severity : Critical								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select OKX account
+3. Select  any trade
+4. Place order and tap trade
+6. Verify order history account tab section
+
+							
+Actual result :  Different user account name showing<br>
+Expected result : Should display account name of the correct user<br>
+Environment details Device : <br>
+Browser : Chrome
+OS : Windows 11<br>
+To see the output video run test in terminal :<br>
+                       npx playwright test okx_DiffUserAccountnameinOrderhistory.spec.ts --project=chromium --headed    
+                       npx playwright show-report 
+Refer screenshot:<br>
+           <img width="1918" height="919" alt="diff acc name showing" src="https://github.com/user-attachments/assets/dab27690-ed54-422f-8a6b-b4a889e6378b" />
+
+
+
+## Medium Priority Issues
+### MED-001: GoOps Reconcillation full data is not displaying when open in iPad Mini										
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ in iPad Mini
+2. Select any account
+3. Tap on GoOps option from account tab
+4. Tap Reconcillation 
+6. Verify the options by scrolling
+							
+Actual result :  Data upto Asset tab is only displaying<br>
+Expected result : Should display all data related to  reconcillation metrix<br>
+Environment details Device : Device : iPad Mini(Mobile emulation)<br>
+To see the output video run test in terminal :<br>
+                       npx playwright test Reconcillationmetrixdatamissing.spec.ts   --project="Mobile Safari - iPad Mini"     
+                       npx playwright show-report 
+
+
+### MED-002: No response received from UDP server issue displaying when add account			
+Functional area : Account
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ in iPad Mini
+2. Select any account
+3. Select Admin option from account tab
+4. Add account
+6. Enter all details and and tap add account and verify 
+							
+Actual result :  No response received from UDP server displaying<br>
+Expected result : Able to add account without any issues<br>
+Environment details Device : Device : Pixel 5(Mobile emulation)<br>
+To see the output video run test in terminal :<br>
+                       npx playwright test AddAccount.spec.ts --project="Mobile Safari-Pixel 5"    
+                       npx playwright show-report 
+
+### MED-003: UI seems to be not good if enter account name with large input and try to delete 			
+Functional area : Account
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select any account
+3. Select Admin option from account tab
+4. Add account
+6. Enter large input as account name and add account
+7. After add account try to delete the same
+							
+Actual result :  UI display is not good and the account name is displaying as truncated<br>
+Expected result : Should set max input character limit for enter input<br>
+Environment details Device : Browser : Chrome
+                           OS : Windows 11 <br>
+To see the output video run test in terminal :<br>
+                       npx playwright test AddAccountwithlargeaccountname.spec.ts --project=firefox --headed    
+                       npx playwright show-report
+
+### MED-004: Order modified message showing when enter large inputs for open orders 			
+Functional area : GoTrade page
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select any account
+3. Select Open orders
+4. Tap modify and enter large inputs for quantity and amount
+6. Verify message displayed
+							
+Actual result :  Order accepted message displaying even if enter large inputs<br>
+Expected result : Should set limit to enter inputs<br>
+Environment details Device : Browser : Chrome
+                           OS : Windows 11 <br>
+To see the output video run test in terminal :<br>
+                      npx playwright test Modifyorderwithlargeinput.spec.ts --project=chromium --headed    
+                       npx playwright show-report  
+ Refer screenshot: <br>
+           <img width="1888" height="888" alt="modifyorderwithlargeinput" src="https://github.com/user-attachments/assets/5e594b27-1fba-4264-8bd8-c2397635530a" />
+
+
+### MED-005: Error message displaying when try to modify account 			
+Functional area : Account
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select any account
+3. Select Admin option from account tab
+4. Modify account
+
+Actual result :  Error message displaying when try to <br>
+Expected result : Should set limit to enter inputs<br>
+Environment details Device : Browser : Firefox
+                           OS : Windows 11 <br>
+To see the output video run test in terminal :<br>
+                      npx playwright test ErrorWhenmodifyAccount.spec.ts --project=firefox --headed   
+                       npx playwright show-report      
+Check reference screenshot : tests/ErrorWhenmodifyAccount.spec.ts-snapshots
+
+### MED-006: Error message displaying when try to modify account 			
+Functional area : Account
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select any account
+3. Select Admin option from account tab
+4. Modify account
+
+Actual result :  Error message displaying when try to modify account<br>
+Expected result : Able to modify account details<br>
+Environment details Device : Browser : Firefox
+                           OS : Windows 11 <br>
+Refer screenshot :<br>
+                      <img width="1911" height="917" alt="error when modify account" src="https://github.com/user-attachments/assets/589adf1c-ec0a-4531-9ac8-198ce3ff5eaf" />
+   
+
+### MED-007: GoMarket page not responsive message displayed when leave page for sometime
+Functional area : GoMarket
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select GoMarket
+3. Verify page without doing anything 
+
+Actual result :  Page unresponsive message displaying when leave page without doing any thing <br>
+Expected result : Should perform all actions <br>
+Environment details Device : Browser : Firefox
+                           OS : Windows 11 <br>
+Refer screenshot:<br>
+                      <img width="1911" height="923" alt="gomarketpagenotresponsive" src="https://github.com/user-attachments/assets/f7e1b0d5-fedd-4811-acf1-5fb0c6642c59" />
+
+
+                       
