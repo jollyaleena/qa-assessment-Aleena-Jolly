@@ -321,10 +321,47 @@ To see the output video run test in terminal :<br>
                       npx playwright show-report
 
 
-					  
+### MED-013: Authentication failed message display when adding new Binance account
+Functional area : Account
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select admin from account tab
+3.Tap add account
+4. Create new 3 binance account
+5. After successfully creating 3 accounts create 4th account
+6. Verify message displayed
+
+Actual result : Authentication failed message displayed <br>
+Expected result : Able to add account without any issues(In case of OKX able to add account) <br>
+Environment details Device : Browser : Firefox
+                           OS : Windows 11 <br>                       
+Refer screenshot :<br>
+         tests/Authenticationfailedwhenaddbinanceaccount.spec.ts-snapshots
+
+To see the output video run test in terminal :<br>
+                      npx playwright test Authenticationfailedwhenaddbinanceaccount.spec.ts --project=firefox --headed
+                      npx playwright show-report					  
 
 
+### MED-014: Not able to see Modify/Delete account option in iPhone 11
+Functional area : Account
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ in iPhone 11
+2. Select admin from account tab
+3.Verify the account page opening in mobile emulation(iPhone 11)
+4. Verify all options
+   
+Actual result : Modify/Delete option not dispalying <br>
+Expected result : Able to perform all operation even if open in mobile emulation <br>
+Environment details Device :  Device : iPhone 11(Mobile emulation)<br>                    
+Refer screenshot :<br>
+         tests/Notabletomodifyordeleteaccount.spec.ts-snapshots
 
+To see the output video run test in terminal :<br>
+                      npx playwright test Notabletomodifyordeleteaccount.spec.ts --project="Mobile Safari"
+                      npx playwright show-report
 
 
 
