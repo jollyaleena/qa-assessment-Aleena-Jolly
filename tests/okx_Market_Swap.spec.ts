@@ -15,5 +15,3 @@ test('Market order placed in OKX Swap', async ({ page }) => {
     await expect(page).toHaveScreenshot()
 });
 
-
-//working orders

@@ -17,4 +17,3 @@ test('Limit order placed in OKX Futures ', async ({ page }) => {
 });
 
 
-//order history

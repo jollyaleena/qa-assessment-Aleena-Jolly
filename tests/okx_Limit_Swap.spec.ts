@@ -14,4 +14,3 @@ test('Limit order placed in OKX Swap ', async ({ page }) => {
 });
 
 
-//working orders

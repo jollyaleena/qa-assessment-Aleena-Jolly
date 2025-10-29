@@ -16,4 +16,3 @@ test('Limit order placed in OKX Spot ', async ({ page }) => {
     await page.getByTestId('trade-button').click();
 });
 
-//orders table
