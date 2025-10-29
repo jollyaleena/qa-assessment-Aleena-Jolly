@@ -1,4 +1,6 @@
- Application Under Test: Gotrade Platform<br>
+# GoQuant Test Report
+ 
+ Application Under Test: GoQuant Platform<br>
  Test Period: October 21-29, 2025<br>
  Tester: Aleena Jolly<br>
  Testing Framework: Playwright with TypeScript<br>
