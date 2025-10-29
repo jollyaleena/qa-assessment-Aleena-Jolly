@@ -299,7 +299,26 @@ To see the output video run test in terminal :<br>
                       npx playwright show-report
 
 
+### MED-012: If placed order during offline both order placed and error while placing message displayed
+Functional area : GoTrade page
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select any account and login
+3.Turn OFF network
+4. Place order and verify
 
+Actual result : Both order placed and error while placing order message displayed <br>
+Expected result : Proper message should display on conditions <br>
+Environment details Device : Browser : Chrome
+                           OS : Windows 11 <br>                       
+Refer screenshot :<br>
+          <img width="1916" height="914" alt="offline" src="https://github.com/user-attachments/assets/918ebda3-80c9-4fe8-856a-808fc8ae74dd" />
+
+
+To see the output video run test in terminal :<br>
+                      npx playwright test orderplacedduringoffline.spec.ts --project=chromium --headed
+                      npx playwright show-report
 
 
 					  
