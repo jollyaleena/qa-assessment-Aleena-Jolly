@@ -216,4 +216,96 @@ Refer screenshot:<br>
                       <img width="1911" height="923" alt="gomarketpagenotresponsive" src="https://github.com/user-attachments/assets/f7e1b0d5-fedd-4811-acf1-5fb0c6642c59" />
 
 
-                       
+### MED-008: Post trade analytics and GoRisk page not displaying data
+Functional area : GoRisk/PostTrade Analytics
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select GoRisk/Post Trade Analytics
+3.Verify page when loading 
+
+Actual result : No data displaying when open page <br>
+Expected result : Should display data <br>
+Environment details Device : Browser : Firefox
+                           OS : Windows 11 <br>                       
+Refer screenshot :<br>
+           <img width="1902" height="914" alt="GoRisk data not displaying" src="https://github.com/user-attachments/assets/eaf3b462-af86-41e9-b231-9f360999853e" />
+
+To see the output video run test in terminal :<br>
+                      npx playwright test GoRiskandPostTradedatanotdisplaying.spec.ts --project=firefox --headed   
+                      npx playwright show-report
+
+
+### MED-009: Asset utilization graph not showing and orderbook display is not responsive in iPhone 11
+Functional area : GoTrade page
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ in iPhone 11
+2. Select OKX account
+3.Verify Asset utilization and orderbook display
+
+Actual result : Order book display is not responsive and Asset utilization graph not displaying <br>
+Expected result : Should display correct data and UI should responsive <br>
+Environment details Device : Browser : Firefox
+                           OS : Windows 11 <br>                       
+Refer screenshot :<br>
+           <img width="508" height="1016" alt="assetutilization" src="https://github.com/user-attachments/assets/4800a220-5458-4d8a-99e2-8029a759f687" />
+		   <img width="1180" height="2408" alt="orderbookdisplay" src="https://github.com/user-attachments/assets/6797d753-24a9-4012-be09-416c048c0a7b" />
+
+
+To see the output video run test in terminal :<br>
+                      npx playwright test Assetutilizationandorderbookdisplay.spec.ts --project="Mobile Safari"  
+                      npx playwright show-report
+
+
+### MED-010: No response recieved from UDP server when place Binance order
+Functional area : GoTrade page
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select Binance USDM account
+3.Tap Market from more option and place order
+
+Actual result : Order accepted message display and after NO response from UDP server error display <br>
+Expected result : Able to place order and display in order history <br>
+Environment details Device : Browser : Chrome
+                           OS : Windows 11 <br>                       
+Refer screenshot :<br>
+           <img width="1923" height="904" alt="binanceordernoresponsefromudpserver" src="https://github.com/user-attachments/assets/cb1422bd-d26d-416d-bbbc-3076763aac80" />
+
+To see the output video run test in terminal :<br>
+                      npx playwright test ErrorwhenplaceorderinBinance.spec.ts --project=chromium --headed 
+                      npx playwright show-report
+
+
+### MED-011: Bad request message displayed on tap Kill edge algorithm
+Functional area : GoTrade page
+Severity : Medium								
+Steps to Reproduce :								
+1. Open the URL: http://test1.gotrade.goquant.io/ 
+2. Select any account 
+3.Tap Kill edge algorithm and tap confirm
+4. Verify message displayed
+
+Actual result : Bad request message displayed on tap <br>
+Expected result : Able to do all actions <br>
+Environment details Device : Browser : Chrome
+                           OS : Windows 11 <br>                       
+Refer screenshot :<br>
+          tests/Badrequestrecievedontapkilledge.spec.ts-snapshots
+
+To see the output video run test in terminal :<br>
+                      npx playwright test Badrequestrecievedontapkilledge.spec.ts --project=chromium --headed 
+                      npx playwright show-report
+
+
+
+
+
+					  
+
+
+
+
+
+
